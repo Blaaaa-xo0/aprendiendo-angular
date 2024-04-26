@@ -1,0 +1,47 @@
+<div class="container mx-auto max-w-7xl mt-12">
+
+  <h1 class="font-bold text-4xl py-4 text-center">Estudiantes</h1>
+
+  <div class="py-6">
+    <button
+      routerLink="/new"
+      class="rounded-md bg-black text-white font-semibold hover:bg-white hover:border-4 hover:border-black py-1.5 px-3 hover:text-black transition-all duration-300 ease-in" >Nuevo Estudiante</button>
+  </div>
+
+  <div class="shadow-md rounded-md">
+    <table class="w-full text-sm text-left rounded-md">
+      <thead class="text-base text-white bg-gray-500 ">
+        <tr>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">Nombre</th>
+          <th scope="col" class="px-6 py-3">Email</th>
+          <th scope="col" class="px-6 py-3">Nacido</th>
+          <th scope="col" class="px-6 py-3">Edad</th>
+          <th scope="col" class="px-6 py-3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(student of students; track student.id){
+          <tr class="bg-white border-b">
+            <td class="px-6 py-4">{{ student.id }}</td>
+            <td class="px-6 py-4">{{ student.name }}</td>
+            <td class="px-6 py-4">{{ student.email}}</td>
+            <td class="px-6 py-4">{{ student.dob }}</td>
+            <td class="px-6 py-4">{{ student.age }}</td>
+            <td>
+              <button
+                routerLink="/edit/{{ student.id }}"
+                class="rounded-md bg-green-500 text-white font-semibold hover:bg-white hover:border-4 hover:border-green-500 py-1.5 px-3 hover:text-green-500 transition-all duration-300 ease-in" >Editar</button>
+
+              <button routerLink="/delete/{{student.id}}"
+                class="rounded-md ml-2 bg-red-500 text-white font-semibold hover:bg-white hover:border-4 hover:border-red-500 py-1.5 px-3 hover:text-red-500 transition-all duration-300 ease-in">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        }
+
+      </tbody>
+    </table>
+  </div>
+</div>
